@@ -29,11 +29,9 @@ export default function Home(props) {
 
                 id='myForm'
                 className={classes.formBox}
-                style={{ transition: 'width 1s ease', width: '100%', padding: '3% 1%' }}
-
             >
  <Presentation>
-<div style={{width:'10opx', height:'100%', backgroundColor:'red' }}></div>
+<div style={{width:'100px', height:'100%', backgroundColor:'red' }}></div>
 
  </Presentation>
             </Box>

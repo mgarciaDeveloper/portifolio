@@ -15,12 +15,32 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'left',
     alignItems: 'left',
     marginTop: 0,
-    padding: '0 5px 5px 5px',
-    minHeight: '90vh',
+    padding: '2vh 3vw 3vw 2vh',
+    height: '98vh',
     backgroundColor: '#696969',
     backgroundImage: 'url(https://www.transparenttextures.com/patterns/fabric-of-squares.png)',
   },
 
+  formBox: {
+    backgroundColor: theme.palette.background.paper,
+    borderRadius: '10px',
+    padding: '2vh 3vw 2vh 3vw',
+  },
+
+  footer: {
+    backgroundColor: theme.palette.background.paper,
+    width: '100%',
+    height:'12%',
+    position:'sticky',
+    top:'87%'
+
+},
+
+animationText:{
+
+},
+
+//------------------------
   optionsBox: {
     backgroundColor: theme.palette.background.paper,
     height: '90vh',
@@ -86,20 +106,7 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: "25px"
   },
 
-  formBox: {
-    backgroundColor: theme.palette.background.paper,
-    borderRadius: '10px',
-    width: '100%',
-    padding: '3% 5%',
-    paddingBottom: '7%',
-    position: 'relative',
-    display: 'flex',
-    justifyContent: 'left',
-    flexDirection: 'column',
-    textAlign: 'left',
-    alignItems: 'left',
 
-  },
   formBoxProject: {
     backgroundColor: theme.palette.background.paper,
     
@@ -148,12 +155,6 @@ const useStyles = makeStyles((theme) => ({
   },
 
 
-  //--- Facilities Registration --- ^
-
-  //--- Fund --- V
-
-  //--- Fund --- ^
-
   rusuretodelete: {
     width: '30%',
     minHeight: '30%',
@@ -170,8 +171,6 @@ const useStyles = makeStyles((theme) => ({
     color: '#14279B',
     fontWeight: '300',
   },
-
-
 
 
   span: {
@@ -225,7 +224,7 @@ const useStyles = makeStyles((theme) => ({
 
   cardContent: {
     flexGrow: 1,
-  }
+  },
 }));
 
 export default useStyles;
