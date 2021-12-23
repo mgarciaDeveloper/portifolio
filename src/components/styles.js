@@ -15,8 +15,8 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'left',
     alignItems: 'left',
     marginTop: 0,
-    padding: '2vh 3vw 3vw 2vh',
-    height: '98vh',
+    padding: '1vh 2vw 1vh 2vw',
+    height: '99vh',
     backgroundColor: '#696969',
     backgroundImage: 'url(https://www.transparenttextures.com/patterns/fabric-of-squares.png)',
   },
@@ -30,14 +30,17 @@ const useStyles = makeStyles((theme) => ({
   footer: {
     backgroundColor: theme.palette.background.paper,
     width: '100%',
-    height:'12%',
-    position:'sticky',
-    top:'87%'
+    
 
 },
 
-animationText:{
 
+graphCards: {
+  backgroundColor: theme.palette.background.paper,
+  width: "100%",
+  height: "30%",
+  display: 'inline-block',
+  paddingLeft: "25px"
 },
 
 //------------------------
@@ -97,14 +100,6 @@ animationText:{
     backgroundColor: theme.palette.background.paper,
   },
 
-
-  graphCards: {
-    backgroundColor: theme.palette.background.paper,
-    width: "100%",
-    height: "30%",
-    display: 'inline-block',
-    paddingLeft: "25px"
-  },
 
 
   formBoxProject: {

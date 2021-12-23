@@ -14,9 +14,16 @@ import Divider from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
-
+import ListSubheader from '@mui/material/ListSubheader';
+import ImageListItemBar from '@mui/material/ImageListItemBar';
 import Tooltip from '@mui/material/Tooltip';
 
+
+import HeatMap from "./HeatMap";
+import heatMapData from "./heatMapData";
+import NameAnimation from './NameAnimation';
+import { Doughnut } from "react-chartjs-2";
+import Chart from "react-google-charts";
 //------- MUI icons
 
 
@@ -26,23 +33,107 @@ function Presentation(props) {
     const timer = React.useRef();
     const classes = useStyles();
 
-    const [tempoInicial, setTempoInicial] = useState([false, false]);
+    const [tempoInicial, setTempoInicial] = useState([false, false, false, false]); // Open, Matheus, Garcia, Developer
+
 
 
     function contarTempo() {
         timer.current = window.setTimeout(() => {
-            setTempoInicial([true, false]);
+            setTempoInicial([true, false, false, false]);
             timer.current = window.setTimeout(() => {
-                setTempoInicial([true, true]);
-            }, 500);
-        }, 500);
+                setTempoInicial([true, true, false, false]);
+                timer.current = window.setTimeout(() => {
+                    setTempoInicial([true, false, true, false]);
+                    timer.current = window.setTimeout(() => {
+                        setTempoInicial([true, false, false, true]);
+                        timer.current = window.setTimeout(() => {
+                            setTempoInicial([true, false, false, false]);
+                        }, 1000);
+                    }, 1000);
+                }, 1000);
+            }, 1000);
+        }, 1000);
 
     }
-
 
     React.useEffect(() => {
         contarTempo();
     }, []);
+
+
+
+
+
+    const chartData = {
+        labels: [
+            "China",
+            "EU",
+            "USA",
+            "Japan",
+            "Germany",
+            "Italy",
+            "India",
+            "Australia",
+            "Vietnam",
+            "South Corea",
+            "Spain",
+            "United Kingdom",
+            "France",
+            'Netherlands',
+            'Brazil'
+        ],
+        datasets: [
+            {
+                label: "Solar PV capacity (MW)",
+                data: [254, 152, 75, 67, 53, 39, 21, 17, 16, 14, 14, 13, 11, 10, 7],
+                backgroundColor: [
+                    "rgba(50, 80, 46, 1)",
+                    "rgba(236, 231, 180, 1)",
+                    "rgba(255, 206, 86, 1)",
+                    "rgba(75, 192, 192, 1)",
+                    "rgba(153, 102, 255, 1)",
+                    "rgba(91, 13, 30, 1)",
+                    "rgba(236, 150, 25, 1)",
+                    "rgba(94, 105, 180, 1)",
+                    "rgba(78, 55, 78, 1)",
+                    'rgba(255, 89, 89, 1)',
+                    'rgba(103, 111, 163, 1)',
+                    'rgba(205, 222, 255,1)',
+                    'rgba(26, 55, 77,1)',
+                    'rgba(110, 60, 188, 1)',
+                    'rgba(184, 228, 240,1)'
+
+                ],
+                borderColor: [
+                    "rgba(255, 255, 255, 1)",
+                    "rgba(255, 255, 255, 1)",
+                    "rgba(255, 255, 255, 1)",
+                    "rgba(255, 255, 255, 1)",
+                    "rgba(255, 255, 255, 1)",
+                    "rgba(255, 255, 255, 1)",
+                    "rgba(255, 255, 255, 1)",
+                    "rgba(255, 255, 255, 1)",
+                    "rgba(255, 255, 255, 1)",
+                    "rgba(255, 255, 255, 1)",
+                    "rgba(255, 255, 255, 1)",
+                    "rgba(255, 255, 255, 1)",
+                    "rgba(255, 255, 255, 1)",
+                    "rgba(255, 255, 255, 1)",
+                    "rgba(255, 255, 255, 1)",
+                ],
+                borderWidth: 1,
+                hoverOffset: 4,
+            },
+        ],
+    };
+
+
+
+
+
+
+
+
 
     const openInNewTab = (url) => {
         const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
@@ -54,67 +145,63 @@ function Presentation(props) {
     }
 
     return (
-        <Stack justifyContent='center' direction="column" alignContent='center' sx={{ width: '100%', margin: 0, }} spacing={7}>
+        <Stack justifyContent='center' direction="column" alignContent='center' sx={{ width: '100%', height: '100%', margin: 0, }} spacing={7}>
 
             <Stack
-                sx={{ width: '100%', }}
+                sx={{ width: '100%', height: '70vh' }}
                 direction="row"
                 justifyContent="space-around"
                 alignItems="flex-start"
                 spacing={2}
             >
 
-
-                <Stack
-                    sx={{ width: '25%', height: "100%", marginLeft: '2%', }}
-                    direction="column"
-                    justifyContent="center"
-                    alignItems="flex-start"
-                    spacing={2}
-                >
-                    <Stack
-
-                        direction="row"
-                        justifyContent="center"
-                        alignItems="flex-start"
-                        spacing={0}
-                    >
-                        <Grow in={tempoInicial[0]}>
-                            <Typography variant="h5" align='left' color='primary' style={{ display: 'inline-block' }}>
-                                MGD
-                            </Typography>
-                        </Grow>
-                        <Grow in={tempoInicial[1]}>
-                            <Typography variant="h5" align='left' color='primary' style={{ display: 'inline-block', }}>
-                                eveloper
-                            </Typography>
-                        </Grow>
-
-                    </Stack>
+                <NameAnimation tempoInicial={tempoInicial} />
 
 
 
+                <Paper sx={{ width: '60%', height: '100%' }}>
+                    <ImageList sx={{ width: '100%', height: '100%' }}>
+
+                        <ImageListItem cols={2} sx={{ margin: 3 }} key='map' >
+                            <div width='50%' height='40vh'><HeatMap data={heatMapData} center={{ lat: -18.5873, lng: -46.5177 }} /></div>
+                            <ImageListItemBar
+                                title={'Google Maps React'}
+                                subtitle={'APIs with Google Clound allows you to integrate Maps with your application '}
+
+                            />
+                        </ImageListItem>
+
+                        <ImageListItem cols={2} sx={{ margin: 3 }} key='chart' >
+                            <Chart
+                                width={'100%'}
+                                height={'100%'}
+                                chartType="BarChart"
+                                loader={<div>Loading Chart</div>}
+                                data={[
+                                    ['City', 'Capacity (MW)'],
+                                    ['Várzea de Palma', 11],
+                                    ['Uberlândia', 9],
+                                    ['Buritizeiro', 8],
+                                    ['Belo Horizonte', 5],
+                                    ['Jaíba', 4],
+                                ]}
+                                options={{
+                                    title: "Solar PV genetaion at the province of 'Minas Gerais/BR'",
+                                    // For the legend to fit, we make the chart area smaller
+                                    chartArea: { width: '70%', height: '70%' },
+                                    // lineWidth: 25
+                                }}
+                                // For tests
+                                rootProps={{ 'data-testid': '1' }}
+                            />
+                            <ImageListItemBar
+                                title={'Charts'}
+                                subtitle={'APIs with React-JS can give you a good data visualization '}
+
+                            />
+                        </ImageListItem>
 
 
-                    <Typography variant="subtitle1" align='left' >
-                        Distribuição e organização de tarefas, controle e visualização de projetos, armazenamento e processamento de dados: Tudo isto e muito mais em uma só plataforma.
-                    </Typography>
-                    <Typography variant="h8" align='left' gutterBottom style={{ color: '#053742' }}>
-                        TC Rodrigo (Concepção) <br /> 1º Ten Sixel (Análise de dados) <br /> 1º Ten Matheus Garcia (Desenvolvimento) <br /> Sd Alves (Server management )
-                    </Typography>
-
-
-
-                </Stack>
-                <Paper sx={{ width: '50%', height: '100%' }}>
-                    <ImageList variant="quilted" sx={{ width: '50%', height: '55vh' }}>
-                        {
-                            React.Children.map(props.children, (child) =>
-                                <ImageListItem cols={child.props.propsCol ? 1 : 2} sx={{ margin: 3 }} >
-                                    {child}
-                                </ImageListItem>
-                            )
-                        }
                     </ImageList>
 
                 </Paper>
@@ -123,8 +210,8 @@ function Presentation(props) {
             <footer className={classes.footer}>
                 <Stack justifyContent='center' direction="column" alignContent='center' sx={{ width: '100%', margin: 0, }} spacing={2}>
 
-                    <Typography variant="p" align='center' gutterBottom style={{ color: '#053742' }}>
-                        Desenvolvido por completo na CRO/3. Para isto, a equipe de programadores Full Stack escreveu mais de 10.000 linhas de código em Javascript, e contou com as seguintes ferramentas :
+                    <Typography variant="subtitle2" align='center' gutterBottom style={{ color: '#053742' }}>
+                        skills:
                     </Typography>
 
 
