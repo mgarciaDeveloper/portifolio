@@ -29,7 +29,7 @@ function NameAnimation(props) {
     }
 
     return (<Stack
-        sx={{ width: props.mobile ? '100%':'60%', height: "100%", }}
+        sx={{ width: props.mobile ? '100%':'60%', height: "100%", marginTop:'7vh' }}
         direction="column"
         justifyContent="center"
         alignItems="flex-start"

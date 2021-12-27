@@ -78,10 +78,11 @@ function Presentation(props) {
     }
 
     return (
-        <Stack justifyContent='center' direction="column" alignContent='center' sx={{ width: '100%', height: '100%', margin: 0, }} spacing={7}>
+        <Stack justifyContent='center' direction="column" alignContent='center' sx={{ width: '100%', height: '100%', margin: 0, }} spacing={7}
+        >
 
             <Stack
-                sx={{ width: '100%', mineight: '100vh' }}
+                sx={{ width: '100%', minHeight: window.screen.width < 1200 ? '100vh' : '80vh' }}
                 direction={window.screen.width < 1200 ? 'column' : 'row'}
                 justifyContent="space-around"
                 alignItems="flex-start"
@@ -92,19 +93,20 @@ function Presentation(props) {
 
 
 
-                <Paper sx={{ width: window.screen.width < 1200 ? '100%' : '40%', height: '100%' }}>
-                    <ImageList sx={{ width: '100%', height: window.screen.width < 1200 ? '50vh' : '50%' }}>
+                <Paper sx={{ width: window.screen.width < 1200 ? '100%' : '40%', height: '80%' }}>
+                    <ImageList sx={{ width: '100%', height: window.screen.width < 1200 ? '50vh' : '40vh' }}>
 
-                        <ImageListItem cols={2} sx={{ margin: window.screen.width < 1200 ? 0 : 3 }} key='map' >
-                            {tempoInicial[0] && <Map data={
-                                [{
-                                    myID: '000',
-                                    name: 'Porto Alegre',
-                                    location: [-30.0544, -51.2235]
+                        <ImageListItem cols={2} sx={{ margin: window.screen.width < 1200 ? 0 : 1 }} key='map' >
+                            {tempoInicial[0] &&
+                                <Map data={
+                                    [{
+                                        myID: '000',
+                                        name: 'Porto Alegre',
+                                        location: [-30.0544, -51.2235]
+                                    }
+                                    ]
                                 }
-                                ]
-                            }
-                                center={{ lat: -30.0544, lng: -51.2335 }} zoom={10} goToFacility={false} />}
+                                    center={{ lat: -30.0544, lng: -51.2335 }} zoom={10} goToFacility={false} />}
 
                             <ImageListItemBar
                                 title={'Where am I ?'}
@@ -124,108 +126,112 @@ function Presentation(props) {
 
                     </ImageList>
 
-                    <Stack
-                        direction="column"
-                        justifyContent="space-between"
-                        alignItems="center"
-                        spacing={7}
-                    >
-                        <Stack direction="row" justifyContent="center" alignItems="center" spacing={12} >
-                            <Typography variant="subtitle2" align='left' gutterBottom style={{ color: '#053742' }}>Skills:</Typography>
-                        </Stack>
 
-                        <Stack direction="row" justifyContent="center" alignItems="center" spacing={12} >
-                            {[
-                                {
-                                    title: 'MongoDB/Mongoose - NoSQL database',
-                                    src: "/images/JSIcons/mongo.png",
-                                    url: 'https://www.mongodb.com/'
+                    {window.screen.width < 1000
+                        && <Stack
+                            direction="column"
+                            justifyContent="space-between"
+                            alignItems="center"
+                            spacing={1}
+                        >
+                            <Stack direction="row" justifyContent="center" alignItems="center" spacing={12} >
+                                <Typography variant="subtitle2" align='left' gutterBottom style={{ color: '#053742' }}>Skills:</Typography>
+                            </Stack>
+
+                            <Stack direction="row" justifyContent="center" alignItems="center" spacing={12} >
+                                {[
+                                    {
+                                        title: 'MongoDB/Mongoose - NoSQL database',
+                                        src: "/images/JSIcons/mongo.png",
+                                        url: 'https://www.mongodb.com/'
+                                    },
+                                    {
+                                        title: 'NodeJS - Biblioteca para desenvolvimento web',
+                                        src: "/images/JSIcons/nodejs.png",
+                                        url: 'https://nodejs.org/en/'
+                                    },
+                                    {
+                                        title: 'Javascript - Linguagem universal de programação',
+                                        src: "/images/JSIcons/javascript.png",
+                                        url: 'https://www.w3schools.com/js/'
+                                    },
+                                ].map((eachIcon, index) =>
+
+                                    <Tooltip title={eachIcon.title}>
+                                        <a
+                                            href={eachIcon.url} target="_blank"
+                                            style={{
+                                                margin: '5vw',
+                                                background: 'none',
+                                                color: 'inherit',
+                                                border: 'none',
+                                                padding: 0,
+                                                font: 'inherit',
+                                                cursor: 'pointer',
+                                                outline: 'inherit',
+                                                width: window.screen.width < 1200 ? '7vw' : '2vw'
+                                            }}
+                                        >
+                                            <img src={eachIcon.src} alt="JS" width={'100%'} ></img>
+                                        </a>
+
+
+
+                                    </Tooltip>
+                                )
+                                }
+                            </Stack>
+                            <Stack direction="row" justifyContent="center" alignItems="center" spacing={12} >
+                                {[{
+                                    title: 'React - Biblioteca JS para desenvolvimento frontend',
+                                    src: "/images/JSIcons/atom.png",
+                                    url: 'https://reactjs.org/'
                                 },
                                 {
-                                    title: 'NodeJS - Biblioteca para desenvolvimento web',
-                                    src: "/images/JSIcons/nodejs.png",
-                                    url: 'https://nodejs.org/en/'
+                                    title: "Google Cloud - API's de ferramentas para desenvolvimento Web",
+                                    src: "/images/JSIcons/google.png",
+                                    url: 'https://console.cloud.google.com'
                                 },
                                 {
-                                    title: 'Javascript - Linguagem universal de programação',
-                                    src: "/images/JSIcons/javascript.png",
-                                    url: 'https://www.w3schools.com/js/'
-                                },
-                            ].map((eachIcon, index) =>
+                                    title: "Amazon Web Services - Diversos serviços para desenvolvimento web, entre eles, os buckets de download/upload de arquivos",
+                                    src: "/images/JSIcons/aws.png",
+                                    url: 'https://aws.amazon.com/pt/'
+                                },].map((eachIcon, index) =>
 
-                                <Tooltip title={eachIcon.title}>
-                                    <a
-                                        href={eachIcon.url} target="_blank"
-                                        style={{
-                                            margin: '5vw',
-                                            background: 'none',
-                                            color: 'inherit',
-                                            border: 'none',
-                                            padding: 0,
-                                            font: 'inherit',
-                                            cursor: 'pointer',
-                                            outline: 'inherit',
-                                            width: window.screen.width < 1200 ? '7vw' : '2vw'
-                                        }}
-                                    >
-                                        <img src={eachIcon.src} alt="JS" width={'100%'} ></img>
-                                    </a>
-
+                                    <Tooltip title={eachIcon.title}>
+                                        <a
+                                            href={eachIcon.url} target="_blank"
+                                            style={{
+                                                margin: '5vw',
+                                                background: 'none',
+                                                color: 'inherit',
+                                                border: 'none',
+                                                padding: 0,
+                                                font: 'inherit',
+                                                cursor: 'pointer',
+                                                outline: 'inherit',
+                                                width: window.screen.width < 1200 ? '7vw' : '2vw'
+                                            }}
+                                        >
+                                            <img src={eachIcon.src} alt="JS" width={'100%'} ></img>
+                                        </a>
 
 
-                                </Tooltip>
-                            )
-                            }
+
+                                    </Tooltip>
+                                )}
+                            </Stack>
+
+
                         </Stack>
 
-                        <Stack direction="row" justifyContent="center" alignItems="center" spacing={12} >
-                            {[{
-                                title: 'React - Biblioteca JS para desenvolvimento frontend',
-                                src: "/images/JSIcons/atom.png",
-                                url: 'https://reactjs.org/'
-                            },
-                            {
-                                title: "Google Cloud - API's de ferramentas para desenvolvimento Web",
-                                src: "/images/JSIcons/google.png",
-                                url: 'https://console.cloud.google.com'
-                            },
-                            {
-                                title: "Amazon Web Services - Diversos serviços para desenvolvimento web, entre eles, os buckets de download/upload de arquivos",
-                                src: "/images/JSIcons/aws.png",
-                                url: 'https://aws.amazon.com/pt/'
-                            },].map((eachIcon, index) =>
+                    }
 
-                                <Tooltip title={eachIcon.title}>
-                                    <a
-                                        href={eachIcon.url} target="_blank"
-                                        style={{
-                                            margin: '5vw',
-                                            background: 'none',
-                                            color: 'inherit',
-                                            border: 'none',
-                                            padding: 0,
-                                            font: 'inherit',
-                                            cursor: 'pointer',
-                                            outline: 'inherit',
-                                            width: window.screen.width < 1200 ? '7vw' : '2vw'
-                                        }}
-                                    >
-                                        <img src={eachIcon.src} alt="JS" width={'100%'} ></img>
-                                    </a>
-
-
-
-                                </Tooltip>
-                            )}
-                        </Stack>
-
-
-                    </Stack>
 
                 </Paper>
 
             </Stack>
-            {/* <footer className={classes.footer}>
+            { window.screen.width > 1000 && <footer className={classes.footer}>
                 <Stack justifyContent='center' direction="column" alignContent='center' sx={{ width: '100%', margin: 0, }} spacing={2}>
 
                     <Typography variant="subtitle2" align='center' gutterBottom style={{ color: '#053742' }}>
@@ -322,7 +328,7 @@ function Presentation(props) {
 
 
                 </Stack>
-            </footer> */}
+            </footer> }
         </Stack>
 
 
