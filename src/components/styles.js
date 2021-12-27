@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'left',
     marginTop: 0,
     padding: '1vh 2vw 1vh 2vw',
-    height: '99vh',
+    minHeight: '100vh',
     backgroundColor: '#696969',
     backgroundImage: 'url(https://www.transparenttextures.com/patterns/fabric-of-squares.png)',
   },
@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   formBox: {
     backgroundColor: theme.palette.background.paper,
     borderRadius: '10px',
-    padding: '2vh 3vw 2vh 3vw',
+    padding: '1vh 3vw 1vh 3vw',
   },
 
   footer: {
