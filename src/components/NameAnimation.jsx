@@ -16,7 +16,7 @@ function NameAnimation(props) {
 
     const timer = React.useRef();
     const tempoInicial = props.tempoInicial;
-    const [copiedSelection, setcopiedSelection] = useState([false, false, false])
+    const [copiedSelection, setcopiedSelection] = useState([false, false, false, false])
 
     function selectOption(selectedOption) {
         setcopiedSelection([false, false, false]);
@@ -86,12 +86,28 @@ function NameAnimation(props) {
 
 
             <br /><br />
+
             <IconButton onClick={() => { selectOption(2) }}>
-                <CopyToClipboard text={'+55 51 9136-4207'}
+                <CopyToClipboard text={'https://www.linkedin.com/in/matheus-garcia-a01b9113b'}
                 >
                     <ContentCopyIcon fontSize='small' />
                 </CopyToClipboard>
                 <Grow in={copiedSelection[2]} style={{ position: 'absolute', bottom: '-50%' }}>
+                    <Typography variant="subtitle2" align='left' gutterBottom style={{ color: '#557C55', padding: 0, display: 'inline-block', margin: 0 }}>Copied!</Typography>
+                </Grow>
+            </IconButton>
+            https://www.linkedin.com/in/matheus-garcia-a01b9113b
+
+
+            <br /><br />
+
+
+            <IconButton onClick={() => { selectOption(3) }}>
+                <CopyToClipboard text={'+55 51 9136-4207'}
+                >
+                    <ContentCopyIcon fontSize='small' />
+                </CopyToClipboard>
+                <Grow in={copiedSelection[3]} style={{ position: 'absolute', bottom: '-50%' }}>
                     <Typography variant="subtitle2" align='left' gutterBottom style={{ color: '#557C55', padding: 0, display: 'inline-block', margin: 0 }}>Copied!</Typography>
                 </Grow>
             </IconButton>
