@@ -82,7 +82,7 @@ function Presentation(props) {
         >
 
             <Stack
-                sx={{ width: '100%', minHeight: window.screen.width < 1200 ? '100vh' : '80vh' }}
+                sx={{ width: '100%', minHeight: window.screen.width < 1200 ? '100vh' : '50vh' }}
                 direction={window.screen.width < 1200 ? 'column' : 'row'}
                 justifyContent="space-around"
                 alignItems="flex-start"
@@ -231,6 +231,10 @@ function Presentation(props) {
                 </Paper>
 
             </Stack>
+
+            <iframe style={{width:'100%', height:window.screen.width < 1200 ? '80vh' : '80vh'}} src="https://www.linkedin.com/in/matheus-garcia-a01b9113b" frameborder="0"></iframe>
+
+
             { window.screen.width > 1000 && <footer className={classes.footer}>
                 <Stack justifyContent='center' direction="column" alignContent='center' sx={{ width: '100%', margin: 0, }} spacing={2}>
 
