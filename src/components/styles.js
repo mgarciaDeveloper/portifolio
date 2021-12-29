@@ -25,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
     borderRadius: '10px',
     padding: '1vh 3vw 1vh 3vw',
+    minHeight:'95vh',
   },
 
   footer: {

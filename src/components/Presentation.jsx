@@ -78,7 +78,7 @@ function Presentation(props) {
     }
 
     return (
-        <Stack justifyContent='center' direction="column" alignContent='center' sx={{ width: '100%', height: '100%', margin: 0, }} spacing={7}
+        <Stack justifyContent='space-between' direction="column" alignContent='center' sx={{ width: '100%', height: '100%', margin: 0, }} spacing={7}
         >
 
             <Stack
@@ -93,7 +93,7 @@ function Presentation(props) {
 
 
 
-                <Paper sx={{ width: window.screen.width < 1200 ? '100%' : '40%', height: '80%' }}>
+                <Paper sx={{ width: window.screen.width < 1200 ? '100%' : '40%', height: '100%' }}>
                     <ImageList sx={{ width: '100%', height: window.screen.width < 1200 ? '50vh' : '40vh' }}>
 
                         <ImageListItem cols={2} sx={{ margin: window.screen.width < 1200 ? 0 : 1 }} key='map' >
@@ -232,8 +232,8 @@ function Presentation(props) {
 
             </Stack>
 
-            <iframe style={{width:'100%', height:window.screen.width < 1200 ? '80vh' : '80vh'}} src="https://www.linkedin.com/in/matheus-garcia-a01b9113b" frameborder="0"></iframe>
-
+{/*             <iframe style={{width:'100%', height:window.screen.width < 1200 ? '80vh' : '80vh'}} src="https://www.linkedin.com/in/matheus-garcia-a01b9113b" frameborder="0"></iframe>
+ */}
 
             { window.screen.width > 1000 && <footer className={classes.footer}>
                 <Stack justifyContent='center' direction="column" alignContent='center' sx={{ width: '100%', margin: 0, }} spacing={2}>
