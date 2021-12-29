@@ -59,7 +59,7 @@ function NameAnimation(props) {
             From back (authentication, data base, data analysis, etc.) to front (web design, data rendering, etc.), I'm here to help you!
 
         </Typography>
-        <Typography variant="subtitle2" align='left' gutterBottom style={{ color: '#053742' }}>
+        <Typography variant="subtitle2" align='left' gutterBottom style={{ color: '#053742', maxWidth:'100%', overflowX: props.mobile && 'auto', whiteSpace: props.mobile && 'nowrap'  }}>
             <IconButton onClick={() => { selectOption(0) }}>
                 <CopyToClipboard text={'matheusgarcia.developer@gmail.com'}
                 >
@@ -97,6 +97,7 @@ function NameAnimation(props) {
                 </Grow>
             </IconButton>
             https://www.linkedin.com/in/matheus-garcia-a01b9113b
+            
 
 
             <br /><br />
