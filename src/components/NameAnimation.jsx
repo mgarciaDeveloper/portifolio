@@ -69,7 +69,7 @@ function NameAnimation(props) {
                     <Typography variant="subtitle2" align='left' gutterBottom style={{ color: '#557C55', padding: 0, display: 'inline-block', margin: 0 }}>Copied!</Typography>
                 </Grow>
             </IconButton>
-            matheusgarcia.developer@gmail.com
+            matheusgarciaf17@gmail.com
 
 
             <br /><br />
